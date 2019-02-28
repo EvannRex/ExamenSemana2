@@ -11,7 +11,7 @@
                 <constraints primaryKey="true" primaryKeyName="PK_SONG"/>
             </column>
         
-            <column name="ARTIST" type="int">
+            <column name="SNG_ARTIST" type="int">
                 <constraints nullable="false"/>
             </column>
 
@@ -70,5 +70,31 @@
             </column>
 	    </createTable>
 
+    </changeSet>
+
+    <changeSet author="Evanny" id="20190228-2">
+        <addForeignKeyConstraint baseColumnNames="SNG_ALBUM"
+            baseTableName="SONG"
+            constraintName="fk_SONG_ALBUM"
+            referencedColumnNames="ALBUM_ID"
+            referencedTableName="ALBUM"/>
+
+        <addForeignKeyConstraint baseColumnNames="SNG_ARTIST"
+            baseTableName="SONG"
+            constraintName="fk_SONG_ARTIST"
+            referencedColumnNames="ARTIST_ID"
+            referencedTableName="ARTIST"/>
+
+        <addForeignKeyConstraint baseColumnNames="ALB_ARTIST"
+            baseTableName="ALBUM"
+            constraintName="fk_ALBUM_ARTIST"
+            referencedColumnNames="ARTIST_ID"
+            referencedTableName="ARTIST"/>
+
+        <addForeignKeyConstraint baseColumnNames="ALB_GENRE"
+            baseTableName="ALBUM"
+            constraintName="fk_ALBUM_GENRE"
+            referencedColumnNames="GENRE_ID"
+            referencedTableName="GENRE"/>
     </changeSet>
 </databaseChangeLog> 
