@@ -4,5 +4,71 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd"> 
-    
+    <changeSet author="Evanny" id="20190228-1">
+
+        <createTable tableName="SONG">
+            <column autoIncrement="true" name="SONG_ID" type="int">
+                <constraints primaryKey="true" primaryKeyName="PK_SONG"/>
+            </column>
+        
+            <column name="ARTIST" type="int">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="SNG_TITLE" type="nvarchar(40)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="SNG_ALBUM" type="int">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="SNG_DURATION" type="time">
+                <constraints nullable="false"/>
+            </column>
+	    </createTable>
+
+        <createTable tableName="ARTIST">
+            <column autoIncrement="true" name="ARTIST_ID" type="int">
+                <constraints primaryKey="true" primaryKeyName="PK_ARTIST"/>
+            </column>
+
+            <column name="ART_NAME" type="nvarchar(40)">
+                <constraints nullable="false"/>
+            </column>
+	    </createTable>
+
+        <createTable tableName="ALBUM">
+            <column autoIncrement="true" name="ALBUM_ID" type="int">
+                <constraints primaryKey="true" primaryKeyName="PK_ALBUM"/>
+            </column>
+
+            <column name="ALB_NAME" type="nvarchar(40)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="ALB_RELEASE" type="date">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="ALB_ARTIST" type="int">
+                <constraints nullable="false"/>
+            </column>
+            
+            <column name="ALB_GENRE" type="int">
+                <constraints nullable="false"/>
+            </column>
+	    </createTable>
+
+        <createTable tableName="GENRE">
+            <column autoIncrement="true" name="GENRE_ID" type="int">
+                <constraints primaryKey="true" primaryKeyName="PK_GENRE"/>
+            </column>
+
+            <column name="GNR_DESCRIPTION" type="nvarchar(100)">
+                <constraints nullable="false"/>
+            </column>
+	    </createTable>
+
+    </changeSet>
 </databaseChangeLog> 
